@@ -2,10 +2,12 @@ package shop.payments.services.payment_service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
+import org.springframework.stereotype.Component;
 import shop.payments.model.Payment;
 import shop.payments.model.PaymentRequest;
 
 @Log
+@Component
 @RequiredArgsConstructor
 public class LoggingPaymentService implements PaymentService {
 
