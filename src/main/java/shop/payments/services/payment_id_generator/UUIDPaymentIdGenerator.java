@@ -1,4 +1,6 @@
-package shop.payments;
+package shop.payments.services.payment_id_generator;
+
+import shop.payments.services.payment_id_generator.PaymentIdGenerator;
 
 import java.util.UUID;
 

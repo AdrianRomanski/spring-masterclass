@@ -1,4 +1,4 @@
-package shop.payments;
+package shop.payments.model;
 
 import org.javamoney.moneta.FastMoney;
 

@@ -1,4 +1,4 @@
-package shop.payments;
+package shop.payments.model;
 
 import lombok.Builder;
 import lombok.Value;

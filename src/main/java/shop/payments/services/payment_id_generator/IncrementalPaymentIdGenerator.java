@@ -1,6 +1,7 @@
-package shop.payments;
+package shop.payments.services.payment_id_generator;
 
 import lombok.Setter;
+import shop.payments.services.payment_id_generator.PaymentIdGenerator;
 
 public class IncrementalPaymentIdGenerator implements PaymentIdGenerator {
 

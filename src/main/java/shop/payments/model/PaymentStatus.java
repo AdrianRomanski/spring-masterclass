@@ -1,4 +1,4 @@
-package shop.payments;
+package shop.payments.model;
 
 public enum  PaymentStatus {
 
