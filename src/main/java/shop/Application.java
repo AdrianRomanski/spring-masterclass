@@ -1,16 +1,15 @@
 package shop;
 
 import lombok.extern.java.Log;
-import shop.payments.FakePaymentService;
-import shop.payments.LocalMoney;
-import shop.payments.PaymentsRequest;
+import shop.payments.*;
 
 @Log
 public class Application {
 
     public static void main(String[] args) {
 
-        var paymentService = new FakePaymentService();
+        var paymentIdGenerator = new IncrementalPaymentIdGenerator();
+        var paymentService = new FakePaymentService(paymentIdGenerator);
         var paymentRequest = PaymentsRequest.builder()
                 .money(LocalMoney.of(1_000))
                 .build();
