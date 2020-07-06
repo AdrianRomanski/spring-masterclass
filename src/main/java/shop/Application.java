@@ -5,7 +5,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import shop.payments.model.LocalMoney;
 import shop.payments.model.PaymentRequest;
-import shop.payments.services.payment_service.LoggingPaymentService;
+import shop.payments.services.payment_service.PaymentService;
 
 @Log
 public class Application {
@@ -16,7 +16,7 @@ public class Application {
 
         try(AnnotationConfigApplicationContext applicationContext =
                 new AnnotationConfigApplicationContext(BASE_PACKAGE)) {
-            var paymentService = applicationContext.getBean(LoggingPaymentService.class);
+            var paymentService = applicationContext.getBean(PaymentService.class);
             var paymentRequest = PaymentRequest.builder()
                     .money(LocalMoney.of(1_000))
                     .build();
