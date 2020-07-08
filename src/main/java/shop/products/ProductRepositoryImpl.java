@@ -1,11 +1,14 @@
 package shop.products;
 
+
+import org.springframework.stereotype.Repository;
 import shop.common.PagedResult;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+@Repository
 public class ProductRepositoryImpl implements ProductRepository {
 
     private Map<Long, Product> products = new HashMap<>();

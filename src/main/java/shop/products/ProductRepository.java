@@ -1,7 +1,9 @@
 package shop.products;
 
 
+import org.springframework.stereotype.Repository;
 import shop.common.PagedResult;
+
 
 public interface ProductRepository {
 

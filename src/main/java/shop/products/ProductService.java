@@ -1,8 +1,10 @@
 package shop.products;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import shop.common.PagedResult;
 
+@Service
 @RequiredArgsConstructor
 public class ProductService {
 
