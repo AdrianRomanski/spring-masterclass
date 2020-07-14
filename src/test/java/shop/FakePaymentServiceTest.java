@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.context.ApplicationEventPublisher;
 import shop.payments.model.LocalMoney;
 import shop.payments.model.Payment;
 import shop.payments.model.PaymentRequest;
@@ -35,6 +36,9 @@ public class FakePaymentServiceTest {
     @Mock
     private PaymentRepository paymentRepository;
 
+    @Mock
+    private ApplicationEventPublisher eventPublisher;
+
     private Payment payment;
 
     @BeforeEach
@@ -43,7 +47,7 @@ public class FakePaymentServiceTest {
 
         when(paymentRepository.save(any(Payment.class))).then(returnsFirstArg());
 
-        FakePaymentService fakePaymentService = new FakePaymentService(paymentIdGenerator, paymentRepository);
+        FakePaymentService fakePaymentService = new FakePaymentService(paymentIdGenerator, paymentRepository, eventPublisher);
 
         payment = fakePaymentService.process(PAYMENT_REQUEST);
     }

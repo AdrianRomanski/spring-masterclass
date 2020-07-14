@@ -2,7 +2,9 @@ package shop.payments.services.payment_service;
 
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
+import shop.events.PaymentStatusChangedEvent;
 import shop.payments.aspect.LogPayments;
 import shop.payments.model.Payment;
 import shop.payments.model.PaymentRequest;
@@ -22,12 +24,14 @@ public class FakePaymentService implements PaymentService {
 
     private final PaymentIdGenerator paymentIdGenerator;
     private final PaymentRepository paymentRepository;
+    private final ApplicationEventPublisher eventPublisher;
 
     @Autowired
     public FakePaymentService(@IdGenerator("uuid") PaymentIdGenerator paymentIdGenerator,
-                              PaymentRepository paymentRepository) {
+                              PaymentRepository paymentRepository, ApplicationEventPublisher eventPublisher) {
         this.paymentIdGenerator = paymentIdGenerator;
         this.paymentRepository = paymentRepository;
+        this.eventPublisher = eventPublisher;
     }
 
 
@@ -40,6 +44,7 @@ public class FakePaymentService implements PaymentService {
                 .timestamp(Instant.now())
                 .status(STARTED)
                 .build();
+        eventPublisher.publishEvent(new PaymentStatusChangedEvent(this, payment));
         return paymentRepository.save(payment);
     }
 
