@@ -1,6 +1,7 @@
 package shop;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Service;
 import shop.common.PagedResult;
 import shop.orders.Order;
@@ -12,6 +13,7 @@ import shop.products.Product;
 import shop.products.ProductService;
 
 @Service
+@EnableAspectJAutoProxy
 @RequiredArgsConstructor
 public class ShopService {
 
