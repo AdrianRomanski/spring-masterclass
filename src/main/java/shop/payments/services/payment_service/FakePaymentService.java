@@ -45,7 +45,8 @@ public class FakePaymentService implements PaymentService {
                 .status(STARTED)
                 .build();
         eventPublisher.publishEvent(new PaymentStatusChangedEvent(this, payment));
-        return paymentRepository.save(payment);
+        throw new RuntimeException("Testing Aspect");
+//        return paymentRepository.save(payment);
     }
 
     @PostConstruct
