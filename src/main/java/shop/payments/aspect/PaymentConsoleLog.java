@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.aspectj.lang.annotation.*;
 import org.springframework.context.MessageSource;
+import org.springframework.core.Ordered;
 import org.springframework.stereotype.Service;
 import shop.payments.model.Payment;
 import shop.payments.model.PaymentRequest;
@@ -12,9 +13,10 @@ import java.util.Locale;
 
 @Log
 @Aspect
+//@Order(50)
 @Service
 @RequiredArgsConstructor
-public class PaymentConsoleLog {
+public class PaymentConsoleLog implements Ordered {
 
 //    private static final String LOG_FORMAT = "A new payment of %s has been initialized";
 
@@ -46,5 +48,10 @@ public class PaymentConsoleLog {
 //        return String.format(LOG_FORMAT, payment.getMoney());
         return messageSource.getMessage(MESSAGE_KEY, new String[] {payment.getMoney().toString()},
                 Locale.getDefault());
+    }
+
+    @Override
+    public int getOrder() {
+        return 50;
     }
 }

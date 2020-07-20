@@ -11,6 +11,7 @@ import shop.payments.model.PaymentRequest;
 import shop.payments.repositories.PaymentRepository;
 import shop.payments.services.payment_id_generator.IdGenerator;
 import shop.payments.services.payment_id_generator.PaymentIdGenerator;
+import shop.profiler.ExecutionTime;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -37,6 +38,7 @@ public class FakePaymentService implements PaymentService {
 
     @Override
     @LogPayments
+    @ExecutionTime
     public Payment process(PaymentRequest paymentRequest) {
         var payment = Payment.builder()
                 .id(paymentIdGenerator.getNext())
@@ -45,8 +47,8 @@ public class FakePaymentService implements PaymentService {
                 .status(STARTED)
                 .build();
         eventPublisher.publishEvent(new PaymentStatusChangedEvent(this, payment));
-        throw new RuntimeException("Testing Aspect");
-//        return paymentRepository.save(payment);
+//        throw new RuntimeException("Testing Aspect");
+        return paymentRepository.save(payment);
     }
 
     @PostConstruct
