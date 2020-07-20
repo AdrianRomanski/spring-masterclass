@@ -1,13 +1,14 @@
-package shop.profiler;
+package shop.common.validator;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target(ElementType.METHOD)
+@Target(ElementType.PARAMETER)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ExecutionTime {
+public @interface Validate {
 
+    Class<? extends RuntimeException> exception() default IllegalArgumentException.class;
 
 }

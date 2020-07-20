@@ -1,0 +1,28 @@
+package shop.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import shop.common.validator.ModelValidator;
+import shop.common.validator.ValidatorService;
+
+import javax.validation.Validator;
+
+@Configuration
+public class CommonConfig {
+
+    @Bean
+    public LocalValidatorFactoryBean validator() {
+        return new LocalValidatorFactoryBean();
+    }
+
+    @Bean
+    public ValidatorService validatorService(Validator validator) {
+        return new ValidatorService(validator);
+    }
+
+    @Bean
+    public ModelValidator modelValidator(ValidatorService validatorService) {
+        return new ModelValidator(validatorService);
+    }
+}

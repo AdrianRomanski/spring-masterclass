@@ -11,7 +11,7 @@ import shop.payments.model.PaymentRequest;
 import shop.payments.repositories.PaymentRepository;
 import shop.payments.services.payment_id_generator.IdGenerator;
 import shop.payments.services.payment_id_generator.PaymentIdGenerator;
-import shop.profiler.ExecutionTime;
+import shop.common.profiler.ExecutionTime;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;

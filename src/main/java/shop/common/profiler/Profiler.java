@@ -1,4 +1,4 @@
-package shop.profiler;
+package shop.common.profiler;
 
 import lombok.extern.java.Log;
 import org.aspectj.lang.ProceedingJoinPoint;
