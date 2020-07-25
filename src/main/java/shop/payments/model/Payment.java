@@ -20,6 +20,7 @@ import java.time.Instant;
 public class Payment {
 
     @Id
+    @GeneratedValue
     private String id;
     @Columns(columns = {
             @Column(name = "currency", length = 3),
