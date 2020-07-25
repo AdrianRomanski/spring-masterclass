@@ -2,6 +2,7 @@ package shop.payments.model;
 
 import lombok.*;
 import org.hibernate.annotations.Columns;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.TypeDef;
 import org.javamoney.moneta.FastMoney;
 import shop.common.FastMoneyUserType;
@@ -20,7 +21,8 @@ import java.time.Instant;
 public class Payment {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator="system-uuid")
+    @GenericGenerator(name="system-uuid", strategy = "uuid")
     private String id;
     @Columns(columns = {
             @Column(name = "currency", length = 3),

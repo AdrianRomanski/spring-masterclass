@@ -24,14 +24,14 @@ import static shop.payments.model.PaymentStatus.STARTED;
 public class FakePaymentService implements PaymentService {
 
     private final PaymentIdGenerator paymentIdGenerator;
-    private final PaymentRepository paymentRepository;
+    private final PaymentRepository hibernatePaymentRepository;
     private final ApplicationEventPublisher eventPublisher;
 
     @Autowired
     public FakePaymentService(@IdGenerator("uuid") PaymentIdGenerator paymentIdGenerator,
-                              PaymentRepository paymentRepository, ApplicationEventPublisher eventPublisher) {
+                              PaymentRepository hibernatePaymentRepository, ApplicationEventPublisher eventPublisher) {
         this.paymentIdGenerator = paymentIdGenerator;
-        this.paymentRepository = paymentRepository;
+        this.hibernatePaymentRepository = hibernatePaymentRepository;
         this.eventPublisher = eventPublisher;
     }
 
@@ -48,7 +48,7 @@ public class FakePaymentService implements PaymentService {
                 .build();
         eventPublisher.publishEvent(new PaymentStatusChangedEvent(this, payment));
 //        throw new RuntimeException("Testing Aspect");
-        return paymentRepository.save(payment);
+        return hibernatePaymentRepository.save(payment);
     }
 
     @PostConstruct

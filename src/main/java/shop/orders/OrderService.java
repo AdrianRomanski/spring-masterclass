@@ -10,22 +10,22 @@ import shop.exceptions.OrderNotFoundException;
 @RequiredArgsConstructor
 public class OrderService {
 
-    private final OrderRepository orderRepository;
+    private final OrderRepository hibernateOrderRepository;
 
 
     public Order add(@Validate(exception = InvalidOrderException.class) Order order) {
-        return orderRepository.save(order);
+        return hibernateOrderRepository.save(order);
     }
 
 
     public Order getBy(Long orderId) {
-        return orderRepository.findById(orderId)
+        return hibernateOrderRepository.findById(orderId)
                 .orElseThrow(OrderNotFoundException::new);
     }
 
 
     public void update(Order order) {
-        orderRepository.update(order);
+        hibernateOrderRepository.update(order);
     }
 
 

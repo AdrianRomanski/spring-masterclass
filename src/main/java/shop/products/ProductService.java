@@ -1,21 +1,23 @@
 package shop.products;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import shop.common.PagedResult;
 
 @Service
-@RequiredArgsConstructor
 public class ProductService {
 
-    private final ProductRepository productRepository;
+    private final ProductRepository hibernateProductRepository;
 
-//    @Retry
+    public ProductService(ProductRepository hibernateProductRepository) {
+        this.hibernateProductRepository = hibernateProductRepository;
+    }
+
+    //    @Retry
     public Product add(Product product) {
-        return productRepository.save(product);
+        return hibernateProductRepository.save(product);
     }
 
     public PagedResult<Product> getAll(int pageNumber, int pageSize) {
-        return productRepository.findAll(pageNumber, pageSize);
+        return hibernateProductRepository.findAll(pageNumber, pageSize);
     }
 }

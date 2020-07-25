@@ -9,11 +9,14 @@ import javax.persistence.*;
 @Data
 @Entity
 @Builder
-@EqualsAndHashCode(exclude = "id")
 @AllArgsConstructor
 @NoArgsConstructor
+@NamedQuery(name = Product.SELECT_PRODUCTS, query = "select p from Product p")
+@EqualsAndHashCode(exclude = "id")
 @Table(name = "products", indexes = @Index(name = "payment_type", columnList = "type"))
 public class Product {
+
+    public static final String SELECT_PRODUCTS = "selectProducts";
 
     @Id
     @GeneratedValue

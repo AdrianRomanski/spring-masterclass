@@ -12,7 +12,10 @@ import shop.payments.services.payment_service.PaymentService;
 import shop.products.Product;
 import shop.products.ProductService;
 
+import javax.transaction.Transactional;
+
 @Service
+@Transactional
 @EnableAspectJAutoProxy
 @RequiredArgsConstructor
 public class ShopService {

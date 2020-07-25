@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-@Repository
+@Repository("hashMapRepository")
 public class ProductRepositoryImpl implements ProductRepository {
 
     private Map<Long, Product> products = new HashMap<>();
