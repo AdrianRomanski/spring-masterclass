@@ -1,16 +1,17 @@
-package shop.products;
+package shop.products.repositories;
 
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import shop.common.PagedResult;
+import shop.products.Product;
 
 import java.util.List;
 
 @RequiredArgsConstructor
 @Repository("hibernateProductRepository")
-public class HibernateProductRepository implements ProductRepository{
+public class HibernateProductRepository implements ProductRepository {
 
     private final SessionFactory sessionFactory;
 

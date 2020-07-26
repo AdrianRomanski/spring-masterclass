@@ -1,7 +1,8 @@
-package shop.products;
+package shop.products.repositories;
 
 
 import shop.common.PagedResult;
+import shop.products.Product;
 
 
 public interface ProductRepository {

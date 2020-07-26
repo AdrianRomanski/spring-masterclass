@@ -1,8 +1,9 @@
-package shop.products;
+package shop.products.repositories;
 
 
 import org.springframework.stereotype.Repository;
 import shop.common.PagedResult;
+import shop.products.Product;
 
 import java.util.ArrayList;
 import java.util.HashMap;

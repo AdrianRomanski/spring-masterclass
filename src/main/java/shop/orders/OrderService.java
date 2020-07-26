@@ -5,27 +5,28 @@ import org.springframework.stereotype.Service;
 import shop.common.validator.Validate;
 import shop.exceptions.InvalidOrderException;
 import shop.exceptions.OrderNotFoundException;
+import shop.orders.repositories.OrderRepository;
 
 @Service
 @RequiredArgsConstructor
 public class OrderService {
 
-    private final OrderRepository hibernateOrderRepository;
+    private final OrderRepository jpaOrderRepository;
 
 
     public Order add(@Validate(exception = InvalidOrderException.class) Order order) {
-        return hibernateOrderRepository.save(order);
+        return jpaOrderRepository.save(order);
     }
 
 
     public Order getBy(Long orderId) {
-        return hibernateOrderRepository.findById(orderId)
+        return jpaOrderRepository.findById(orderId)
                 .orElseThrow(OrderNotFoundException::new);
     }
 
 
     public void update(Order order) {
-        hibernateOrderRepository.update(order);
+        jpaOrderRepository.update(order);
     }
 
 

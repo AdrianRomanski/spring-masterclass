@@ -1,6 +1,7 @@
-package shop.orders;
+package shop.orders.repositories;
 
 import org.springframework.stereotype.Repository;
+import shop.orders.Order;
 
 import java.util.HashMap;
 import java.util.Map;
