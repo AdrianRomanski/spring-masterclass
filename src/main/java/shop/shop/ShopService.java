@@ -1,16 +1,16 @@
-package shop;
+package shop.shop;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Service;
 import shop.common.PagedResult;
-import shop.orders.Order;
-import shop.orders.OrderService;
+import shop.orders.model.Order;
+import shop.orders.service.OrderService;
 import shop.payments.model.Payment;
 import shop.payments.model.PaymentRequest;
 import shop.payments.services.payment_service.PaymentService;
-import shop.products.Product;
-import shop.products.ProductService;
+import shop.products.model.Product;
+import shop.products.service.ProductService;
 
 import javax.transaction.Transactional;
 

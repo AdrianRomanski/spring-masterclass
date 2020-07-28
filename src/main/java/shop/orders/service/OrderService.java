@@ -1,11 +1,12 @@
-package shop.orders;
+package shop.orders.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import shop.common.validator.Validate;
 import shop.exceptions.InvalidOrderException;
 import shop.exceptions.OrderNotFoundException;
-import shop.orders.repositories.OrderRepository;
+import shop.orders.model.Order;
+import shop.orders.repositories.old_repositories.OrderRepository;
 
 @Service
 @RequiredArgsConstructor

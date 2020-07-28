@@ -1,4 +1,4 @@
-package shop.products;
+package shop.products.model;
 
 public enum ProductType {
 

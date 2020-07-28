@@ -12,7 +12,7 @@
 
     <bean id="uuidPaymentGenerator" class="shop.payments.services.payment_id_generator.UUIDPaymentIdGenerator"/>
 
-    <bean id="paymentRepository" class="shop.payments.repositories.PaymentRepositoryImpl"/>
+    <bean id="paymentRepository" class="shop.payments.repositories.old_repositories.PaymentRepositoryImpl"/>
 
     <bean id ="fakePaymentService" class="shop.payments.services.payment_service.FakePaymentService" init-method="init" destroy-method="destroy">
         <constructor-arg name="paymentIdGenerator" ref="uuidPaymentGenerator"/>

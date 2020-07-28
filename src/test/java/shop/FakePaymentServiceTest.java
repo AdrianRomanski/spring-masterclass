@@ -11,7 +11,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import shop.payments.model.LocalMoney;
 import shop.payments.model.Payment;
 import shop.payments.model.PaymentRequest;
-import shop.payments.repositories.PaymentRepository;
+import shop.payments.repositories.PaymentRepositoryJpa;
 import shop.payments.services.payment_id_generator.PaymentIdGenerator;
 import shop.payments.services.payment_service.FakePaymentService;
 
@@ -34,7 +34,7 @@ public class FakePaymentServiceTest {
     private PaymentIdGenerator paymentIdGenerator;
 
     @Mock
-    private PaymentRepository paymentRepository;
+    private PaymentRepositoryJpa paymentRepository;
 
     @Mock
     private ApplicationEventPublisher eventPublisher;

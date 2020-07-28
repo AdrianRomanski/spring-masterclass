@@ -7,7 +7,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import shop.payments.model.Payment;
-import shop.payments.repositories.PaymentRepositoryImpl;
+import shop.payments.repositories.old_repositories.PaymentRepositoryImpl;
 
 import java.util.Map;
 

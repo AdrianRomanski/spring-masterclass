@@ -4,14 +4,14 @@ import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
+import shop.common.profiler.ExecutionTime;
 import shop.events.PaymentStatusChangedEvent;
 import shop.payments.aspect.LogPayments;
 import shop.payments.model.Payment;
 import shop.payments.model.PaymentRequest;
-import shop.payments.repositories.PaymentRepository;
+import shop.payments.repositories.PaymentRepositoryJpa;
 import shop.payments.services.payment_id_generator.IdGenerator;
 import shop.payments.services.payment_id_generator.PaymentIdGenerator;
-import shop.common.profiler.ExecutionTime;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -24,14 +24,14 @@ import static shop.payments.model.PaymentStatus.STARTED;
 public class FakePaymentService implements PaymentService {
 
     private final PaymentIdGenerator paymentIdGenerator;
-    private final PaymentRepository jpaPaymentRepository;
+    private final PaymentRepositoryJpa paymentRepositoryJpa;
     private final ApplicationEventPublisher eventPublisher;
 
     @Autowired
     public FakePaymentService(@IdGenerator("uuid") PaymentIdGenerator paymentIdGenerator,
-                              PaymentRepository jpaPaymentRepository, ApplicationEventPublisher eventPublisher) {
+                              PaymentRepositoryJpa paymentRepositoryJpa, ApplicationEventPublisher eventPublisher) {
         this.paymentIdGenerator = paymentIdGenerator;
-        this.jpaPaymentRepository = jpaPaymentRepository;
+        this.paymentRepositoryJpa = paymentRepositoryJpa;
         this.eventPublisher = eventPublisher;
     }
 
@@ -48,7 +48,7 @@ public class FakePaymentService implements PaymentService {
                 .build();
         eventPublisher.publishEvent(new PaymentStatusChangedEvent(this, payment));
 //        throw new RuntimeException("Testing Aspect");
-        return jpaPaymentRepository.save(payment);
+        return paymentRepositoryJpa.save(payment);
     }
 
     @PostConstruct

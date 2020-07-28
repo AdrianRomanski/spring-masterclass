@@ -1,10 +1,10 @@
-package shop.orders;
+package shop.orders.model;
 
 import lombok.*;
 import org.javamoney.moneta.FastMoney;
 import shop.payments.model.LocalMoney;
 import shop.payments.model.Payment;
-import shop.products.Product;
+import shop.products.model.Product;
 
 import javax.persistence.*;
 import javax.validation.Valid;

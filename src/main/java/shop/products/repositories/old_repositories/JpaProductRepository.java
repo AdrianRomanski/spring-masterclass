@@ -1,15 +1,14 @@
-package shop.products.repositories;
+package shop.products.repositories.old_repositories;
 
 import lombok.Setter;
-import org.springframework.stereotype.Repository;
 import shop.common.PagedResult;
-import shop.products.Product;
+import shop.products.model.Product;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-@Repository("jpaProductRepository")
+//@Repository("jpaProductRepository")
 public class JpaProductRepository implements ProductRepository{
 
     @Setter

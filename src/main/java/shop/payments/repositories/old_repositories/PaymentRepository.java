@@ -1,4 +1,4 @@
-package shop.payments.repositories;
+package shop.payments.repositories.old_repositories;
 
 import shop.payments.model.Payment;
 

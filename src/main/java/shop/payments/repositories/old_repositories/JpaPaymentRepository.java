@@ -1,13 +1,12 @@
-package shop.payments.repositories;
+package shop.payments.repositories.old_repositories;
 
 import lombok.Setter;
-import org.springframework.stereotype.Repository;
 import shop.payments.model.Payment;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-@Repository("jpaPaymentRepository")
+//@Repository("jpaPaymentRepository")
 public class JpaPaymentRepository implements PaymentRepository{
 
     @Setter

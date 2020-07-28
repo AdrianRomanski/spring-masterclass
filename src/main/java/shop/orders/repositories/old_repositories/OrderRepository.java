@@ -1,6 +1,6 @@
-package shop.orders.repositories;
+package shop.orders.repositories.old_repositories;
 
-import shop.orders.Order;
+import shop.orders.model.Order;
 
 import java.util.Optional;
 

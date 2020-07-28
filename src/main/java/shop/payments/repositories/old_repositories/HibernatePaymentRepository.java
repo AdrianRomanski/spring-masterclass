@@ -1,13 +1,12 @@
-package shop.payments.repositories;
+package shop.payments.repositories.old_repositories;
 
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.stereotype.Repository;
 import shop.payments.model.Payment;
 
 @RequiredArgsConstructor
-@Repository("hibernatePaymentRepository")
+//@Repository("hibernatePaymentRepository")
 public class HibernatePaymentRepository implements PaymentRepository {
 
     private final SessionFactory sessionFactory;

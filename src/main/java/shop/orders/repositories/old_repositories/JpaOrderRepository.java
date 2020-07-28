@@ -1,14 +1,13 @@
-package shop.orders.repositories;
+package shop.orders.repositories.old_repositories;
 
 import lombok.Setter;
-import org.springframework.stereotype.Repository;
-import shop.orders.Order;
+import shop.orders.model.Order;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.Optional;
 
-@Repository("jpaOrderRepository")
+//@Repository("jpaOrderRepository")
 public class JpaOrderRepository implements OrderRepository{
 
     @Setter
