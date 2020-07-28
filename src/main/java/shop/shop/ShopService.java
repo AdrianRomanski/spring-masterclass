@@ -13,6 +13,7 @@ import shop.products.model.Product;
 import shop.products.service.ProductService;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -27,6 +28,8 @@ public class ShopService {
     public Product addProduct(Product product) {
         return productService.add(product);
     }
+
+    public List<Product> getByName(String name) { return productService.getByName(name); }
 
     public PagedResult<Product> getProducts(int pageNumber, int pageSize) {
         return productService.getAll(pageNumber, pageSize);

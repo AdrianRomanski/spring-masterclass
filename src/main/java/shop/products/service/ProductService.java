@@ -1,11 +1,15 @@
 package shop.products.service;
 
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import shop.common.PagedResult;
 import shop.products.model.Product;
 import shop.products.repositories.ProductRepositoryJpa;
+
+import java.util.List;
 
 @Service
 public class ProductService {
@@ -17,8 +21,15 @@ public class ProductService {
     }
 
     //    @Retry
+    @CacheEvict("products")
     public Product add(Product product) {
         return productRepository.save(product);
+    }
+
+    @Cacheable("products")
+    public List<Product> getByName(String name) {
+        System.out.println("Reading products from database");
+        return productRepository.findByNameContaining(name);
     }
 
     public PagedResult<Product> getAll(int pageNumber, int pageSize) {
