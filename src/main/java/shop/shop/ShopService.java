@@ -11,6 +11,8 @@ import shop.payments.model.PaymentRequest;
 import shop.payments.services.payment_service.PaymentService;
 import shop.products.model.Product;
 import shop.products.service.ProductService;
+import shop.users.model.User;
+import shop.users.services.UserService;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -24,6 +26,7 @@ public class ShopService {
     private final OrderService orderService;
     private final PaymentService paymentService;
     private final ProductService productService;
+    private final UserService userService;
 
     public Product addProduct(Product product) {
         return productService.add(product);
@@ -48,5 +51,13 @@ public class ShopService {
         order.setPayment(payment);
         orderService.update(order);
         return payment;
+    }
+
+    public User addUser(User user) {
+        return userService.addUser(user);
+    }
+
+    public List<User> findAllUsers() {
+        return userService.getAll();
     }
 }

@@ -7,6 +7,7 @@ import shop.payments.model.LocalMoney;
 import shop.products.model.Product;
 import shop.products.model.ProductType;
 import shop.shop.ShopService;
+import shop.users.model.User;
 
 import java.util.List;
 
@@ -27,6 +28,12 @@ public class Application {
             .price(LocalMoney.of(200))
             .build();
 
+    private static final User ADRIAN = User.builder()
+            .firstName("Adrian")
+            .lastName("Romanski")
+            .build();
+
+
     public static void main(String[] args) {
         try (AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(BASE_PACKAGE)) {
             var shopService = applicationContext.getBean(ShopService.class);
@@ -41,6 +48,11 @@ public class Application {
 
             log.info(shopService.getByName("Spring").toString());
             log.info(shopService.getByName("Spring").toString());
+
+            var user = shopService.addUser(ADRIAN);
+            log.info(user.toString());
+
+            log.info(shopService.findAllUsers().toString());
         }
     }
 
