@@ -4,6 +4,7 @@ import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import shop.common.profiler.ExecutionTime;
 import shop.events.PaymentStatusChangedEvent;
 import shop.payments.aspect.LogPayments;
@@ -20,6 +21,7 @@ import java.time.Instant;
 import static shop.payments.model.PaymentStatus.STARTED;
 
 @Log
+@Transactional
 @Service("paymentService")
 public class FakePaymentService implements PaymentService {
 

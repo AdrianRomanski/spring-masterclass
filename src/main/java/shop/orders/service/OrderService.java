@@ -2,6 +2,7 @@ package shop.orders.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import shop.common.validator.Validate;
 import shop.exceptions.InvalidOrderException;
 import shop.exceptions.OrderNotFoundException;
@@ -9,6 +10,7 @@ import shop.orders.model.Order;
 import shop.orders.repositories.old_repositories.OrderRepository;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class OrderService {
 

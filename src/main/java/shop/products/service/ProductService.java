@@ -5,6 +5,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import shop.common.PagedResult;
 import shop.products.model.Product;
 import shop.products.repositories.ProductRepositoryJpa;
@@ -12,6 +13,7 @@ import shop.products.repositories.ProductRepositoryJpa;
 import java.util.List;
 
 @Service
+@Transactional
 public class ProductService {
 
     private final ProductRepositoryJpa productRepository;
