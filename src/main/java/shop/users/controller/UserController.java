@@ -5,6 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import shop.common.UriBuilder;
 import shop.users.model.User;
+import shop.users.model.UserTransferObject;
+import shop.users.services.UserMapper;
 import shop.users.services.UserService;
 
 import java.net.URI;
@@ -15,18 +17,21 @@ import java.net.URI;
 public class UserController {
 
     private final UserService userService;
+    private final UserMapper userMapper;
     private final UriBuilder uriBuilder = new UriBuilder();
 
     @PostMapping
-    public ResponseEntity<User> addUser(@RequestBody User user) {
+    public ResponseEntity<User> addUser(@RequestBody UserTransferObject userTransferObject) {
+        var user = userMapper.toUser(userTransferObject);
         var userID = userService.addUser(user).getId();
         URI locationUri = uriBuilder.requestUriWithId(userID);
         return ResponseEntity.created(locationUri).build();
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<User> getUser(@PathVariable Long id) {
+    public ResponseEntity<UserTransferObject> getUser(@PathVariable Long id) {
         var user = userService.getById(id);
-        return ResponseEntity.of(user);
+        UserTransferObject userTransferObject = userMapper.toUserTransferObject(user);
+        return ResponseEntity.ok(userTransferObject);
     }
 }
