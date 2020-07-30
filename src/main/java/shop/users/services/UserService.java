@@ -12,4 +12,6 @@ public interface UserService {
     Optional<User> getByFullName(String firstName, String lastName);
 
     List<User> getAll();
+
+    Optional<User> getById(Long id);
 }

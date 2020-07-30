@@ -1,0 +1,14 @@
+POST http://localhost:8080/spring_masterclass_war/api/users
+Content-Type: application/json
+
+{
+  "firstName": "Jan",
+  "lastName": "Kowalski",
+  "email": "jan.kowalski@training.pl"
+}
+
+###
+
+GET http://localhost:8080/spring_masterclass_war/api/users/1
+Accept: application/json
+
