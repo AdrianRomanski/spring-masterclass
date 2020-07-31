@@ -4,12 +4,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import shop.common.PagedResult;
-import shop.web.PagedResultTransferObject;
-import shop.web.UriBuilder;
 import shop.users.model.User;
 import shop.users.model.UserTransferObject;
 import shop.users.services.UserMapper;
 import shop.users.services.UserService;
+import shop.web.PagedResultTransferObject;
+import shop.web.UriBuilder;
 
 import java.net.URI;
 
@@ -45,6 +45,12 @@ public class UserController {
     ) {
         PagedResult<User> users = userService.getByLastName(lastNameFragment, pageNumber, pageSize);
         return userMapper.toUserTransferObjectsPage(users);
-
     }
+
+//    @ExceptionHandler(UserNotFoundException.class)
+//    public ResponseEntity<ExceptionTransferObject> onUserNotFound(UserNotFoundException exception) {
+//        return ResponseEntity
+//                .status(HttpStatus.NOT_FOUND)
+//                .body(new ExceptionTransferObject("User not found"));
+//    }
 }

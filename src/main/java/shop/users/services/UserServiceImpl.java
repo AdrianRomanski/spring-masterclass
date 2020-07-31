@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import shop.common.PagedResult;
+import shop.users.exceptions.UserNotFoundException;
 import shop.users.model.User;
 import shop.users.repositories.UsersRepository;
 
@@ -34,7 +35,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getById(Long id) {
         return usersRepository.findById(id)
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(UserNotFoundException::new);
     }
 
     @Override
