@@ -3,7 +3,9 @@ package shop.users.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import shop.common.UriBuilder;
+import shop.common.PagedResult;
+import shop.web.PagedResultTransferObject;
+import shop.web.UriBuilder;
 import shop.users.model.User;
 import shop.users.model.UserTransferObject;
 import shop.users.services.UserMapper;
@@ -33,5 +35,16 @@ public class UserController {
         var user = userService.getById(id);
         UserTransferObject userTransferObject = userMapper.toUserTransferObject(user);
         return ResponseEntity.ok(userTransferObject);
+    }
+
+    @GetMapping
+    public PagedResultTransferObject<UserTransferObject> getUsersByLastName(
+            @RequestParam String lastNameFragment,
+            @RequestParam(defaultValue = "0")  int pageNumber,
+            @RequestParam(defaultValue = "5") int pageSize
+    ) {
+        PagedResult<User> users = userService.getByLastName(lastNameFragment, pageNumber, pageSize);
+        return userMapper.toUserTransferObjectsPage(users);
+
     }
 }

@@ -1,4 +1,4 @@
-package shop.common;
+package shop.web;
 
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 

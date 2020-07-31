@@ -1,7 +1,9 @@
 package shop.users.services;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import shop.common.PagedResult;
 import shop.users.model.User;
 import shop.users.repositories.UsersRepository;
 
@@ -33,6 +35,11 @@ public class UserServiceImpl implements UserService {
     public User getById(Long id) {
         return usersRepository.findById(id)
                 .orElseThrow(RuntimeException::new);
+    }
 
+    @Override
+    public PagedResult<User> getByLastName(String lastNameFragment, int pageNumber, int pageSize) {
+        var userPage = usersRepository.findByLastNameContaining(lastNameFragment, PageRequest.of(pageNumber, pageSize));
+        return new PagedResult<>(userPage.getContent(), pageNumber, userPage.getTotalPages());
     }
 }

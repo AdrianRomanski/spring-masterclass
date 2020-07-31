@@ -1,5 +1,6 @@
 package shop.users.services;
 
+import shop.common.PagedResult;
 import shop.users.model.User;
 
 import java.util.List;
@@ -14,4 +15,6 @@ public interface UserService {
     List<User> getAll();
 
     User getById(Long id);
+
+    PagedResult<User> getByLastName(String lastNameFragment, int pageNumber, int pageSize);
 }
