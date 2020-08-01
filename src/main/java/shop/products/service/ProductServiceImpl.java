@@ -1,6 +1,7 @@
 package shop.products.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
@@ -9,21 +10,24 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import shop.common.PagedResult;
 import shop.products.model.Product;
-import shop.products.repositories.ProductRepositoryJpa;
+import shop.products.repositories.ProductRepository;
 
 import java.util.List;
 
+@Log
 @Service
 @Transactional
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService{
 
-    private final ProductRepositoryJpa productRepository;
+    private final ProductRepository productRepository;
+    private static Long id = 0L;
 
-    //    @Retry
+//    @Retry
     @Override
     @CacheEvict("products")
     public Product add(Product product) {
+        product.setId(++id);
         return productRepository.save(product);
     }
 

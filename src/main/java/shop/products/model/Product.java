@@ -19,8 +19,9 @@ public class Product {
     public static final String SELECT_PRODUCTS = "selectProducts";
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private String name;
     private String description;
     @Columns(columns = {

@@ -2,15 +2,20 @@ package shop.products.model;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.javamoney.moneta.FastMoney;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.hateoas.RepresentationModel;
+
+import javax.validation.constraints.NotEmpty;
 
 @Data
 @RequiredArgsConstructor
-public class ProductTransferObject {
+public class ProductTransferObject extends RepresentationModel<ProductTransferObject> {
 
+    @NotEmpty
     private String name;
+    @Length(min = 3, max = 255)
     private String description;
-    private FastMoney price;
-    private ProductTypeTransferObject productTypeTransferObject;
+    private String price;
+    private ProductTypeTransferObject type;
 
 }
