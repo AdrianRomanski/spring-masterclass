@@ -2,9 +2,9 @@ POST http://localhost:8080/spring_masterclass_war/api/users
 Content-Type: application/json
 
 {
-  "firstName": "Jan",
-  "lastName": "Kowalski",
-  "emailAddress": "jankowalski@training.pl"
+  "firstName": "Monika",
+  "lastName": "Zawada",
+  "emailAddress": "monika@training.pl"
 }
 ###
 
