@@ -8,18 +8,19 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.context.ApplicationEventPublisher;
-import shop.payments.model.LocalMoney;
-import shop.payments.model.Payment;
-import shop.payments.model.PaymentRequest;
-import shop.payments.repositories.PaymentRepositoryJpa;
-import shop.payments.services.payment_id_generator.PaymentIdGenerator;
-import shop.payments.services.payment_service.FakePaymentService;
+import pl.training.shop.payments.id_generators.PaymentIdGenerator;
+import pl.training.shop.payments.model.LocalMoney;
+import pl.training.shop.payments.model.Payment;
+import pl.training.shop.payments.model.PaymentRequest;
+import pl.training.shop.payments.repositories.PaymentRepository;
+import pl.training.shop.payments.services.FakePaymentService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.AdditionalAnswers.returnsFirstArg;
 import static org.mockito.Mockito.*;
-import static shop.payments.model.PaymentStatus.STARTED;
+import static pl.training.shop.payments.model.PaymentStatus.STARTED;
+
 
 @ExtendWith(MockitoExtension.class)
 public class FakePaymentServiceTest {
@@ -34,7 +35,7 @@ public class FakePaymentServiceTest {
     private PaymentIdGenerator paymentIdGenerator;
 
     @Mock
-    private PaymentRepositoryJpa paymentRepository;
+    private PaymentRepository paymentRepository;
 
     @Mock
     private ApplicationEventPublisher eventPublisher;

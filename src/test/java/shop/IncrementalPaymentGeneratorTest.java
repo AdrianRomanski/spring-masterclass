@@ -2,7 +2,7 @@ package shop;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import shop.payments.services.payment_id_generator.IncrementalPaymentIdGenerator;
+import pl.training.shop.payments.id_generators.IncrementalPaymentIdGenerator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

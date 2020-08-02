@@ -6,7 +6,6 @@ Content-Type: application/json
   "lastName": "Kowalski",
   "emailAddress": "jankowalski@training.pl"
 }
-
 ###
 
 GET http://localhost:8080/spring_masterclass_war/api/users/1

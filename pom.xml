@@ -64,6 +64,16 @@
             <artifactId>spring-plugin-core</artifactId>
             <version>1.2.0.RELEASE</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter</artifactId>-->
+<!--            <version>2.2.6.RELEASE</version>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+            <version>2.3.1.RELEASE</version>
+        </dependency>
         <!--Database-->
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -166,6 +176,11 @@
             <groupId>org.javamoney.moneta</groupId>
             <artifactId>moneta-core</artifactId>
             <version>1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
         </dependency>
     </dependencies>
 
