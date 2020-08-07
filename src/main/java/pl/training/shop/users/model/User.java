@@ -1,6 +1,7 @@
 package pl.training.shop.users.model;
 
 import lombok.*;
+import pl.training.shop.common.validator.Name;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
@@ -20,6 +21,7 @@ public class User {
     @Pattern(regexp = "[A-Za-z]+")
     @Column(name = "first_name", nullable = false)
     private String firstName;
+    @Name
     @Column(name = "last_name", nullable = false)
     private String lastName;
     @Column(unique = true, nullable = false)
