@@ -15,6 +15,7 @@ import javax.validation.Valid;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("api/users")
 @RestController
 @RequiredArgsConstructor
@@ -23,6 +24,7 @@ public class UserRestController {
     private final UserService userService;
     private final UserMapper userMapper;
     private final UriBuilder uriBuilder = new UriBuilder();
+
 
     @PostMapping
     public ResponseEntity<UserTransferObject> addUser(@Valid @RequestBody UserTransferObject userTransferObject, BindingResult bindingResult) {
@@ -35,6 +37,7 @@ public class UserRestController {
         return ResponseEntity.created(locationUri).build();
     }
 
+
     @GetMapping("{id}")
     public ResponseEntity<UserTransferObject> getUser(@PathVariable Long id) {
         var user = userService.getById(id);
@@ -42,6 +45,7 @@ public class UserRestController {
         userTransferObject.add(linkTo(methodOn(UserRestController.class).getUser(id)).withSelfRel());
         return ResponseEntity.ok(userTransferObject);
     }
+
 
     @GetMapping
     public PagedResultTransferObject<UserTransferObject> getUsersByLastName(
