@@ -15,8 +15,7 @@ import javax.validation.Valid;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
-@RequestMapping("api/users")
+@RequestMapping("${apiPrefix}/users")
 @RestController
 @RequiredArgsConstructor
 public class UserRestController {
@@ -37,7 +36,6 @@ public class UserRestController {
         return ResponseEntity.created(locationUri).build();
     }
 
-
     @GetMapping("{id}")
     public ResponseEntity<UserTransferObject> getUser(@PathVariable Long id) {
         var user = userService.getById(id);
@@ -45,7 +43,6 @@ public class UserRestController {
         userTransferObject.add(linkTo(methodOn(UserRestController.class).getUser(id)).withSelfRel());
         return ResponseEntity.ok(userTransferObject);
     }
-
 
     @GetMapping
     public PagedResultTransferObject<UserTransferObject> getUsersByLastName(
@@ -55,12 +52,4 @@ public class UserRestController {
         var users = userService.getByLastName(lastNameFragment, pageNumber, pageSize);
         return userMapper.toUserTransferObjectsPage(users);
     }
-
-    /*@ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<ExceptionTransferObject> onUserNotFound(UserNotFoundException exception) {
-        return ResponseEntity
-                .status(HttpStatus.NOT_FOUND)
-                .body(new ExceptionTransferObject("User not found"));
-    }*/
-
 }

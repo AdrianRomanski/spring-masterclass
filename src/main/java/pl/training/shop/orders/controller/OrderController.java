@@ -14,7 +14,7 @@ import pl.training.shop.orders.model.OrderTransferObject;
 
 import javax.validation.Valid;
 
-@RequestMapping("api/orders")
+@RequestMapping("${apiPrefix}/orders")
 @RestController
 @RequiredArgsConstructor
 public class OrderController {

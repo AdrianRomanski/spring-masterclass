@@ -1,4 +1,4 @@
-POST http://localhost:8080/spring_masterclass_war/api/users
+POST http://localhost:8080/api/users
 Content-Type: application/json
 
 {
@@ -8,17 +8,17 @@ Content-Type: application/json
 }
 ###
 
-GET http://localhost:8080/spring_masterclass_war/api/users/1
+GET http://localhost:8080/api/users/1
 Accept: application/json
 
 ###
 
-GET http://localhost:8080/spring_masterclass_war/api/users?lastNameFragment=Kow
+GET http://localhost:8080/api/users?lastNameFragment=Kow
 Accept: application/json
 
 ###
 
-POST http://localhost:8080/spring_masterclass_war/api/products
+POST http://localhost:8080/api/products
 Content-Type: application/json
 
 {
@@ -30,12 +30,12 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8080/spring_masterclass_war/api/products
+GET http://localhost:8080/api/products
 Accept: application/json
 
 ###
 
-POST http://localhost:8080/spring_masterclass_war/api/products/1/files
+POST http://localhost:8080/api/products/1/files
 Content-Type: multipart/form-data; boundary=WebAppBoundary
 
 --WebAppBoundary

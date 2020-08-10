@@ -13,7 +13,7 @@ import pl.training.shop.products.model.ProductTransferObject;
 
 import javax.validation.Valid;
 
-@RequestMapping("api/products")
+@RequestMapping("${apiPrefix}/products")
 @RestController
 @RequiredArgsConstructor
 public class ProductController {
